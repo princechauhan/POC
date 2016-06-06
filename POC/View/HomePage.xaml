@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="POC.View.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:POC.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding MainVM, Source={StaticResource Locator}}"
+    xmlns:UControl="using:POC.UserControls"
+ >
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--top table control-->
+        <UControl:TopTableUControl/>
+      
+            <Grid Grid.Row="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" Padding="0,0,0,5" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--left side menu section-->
+                    <UControl:LeftMenuUControl/>
+
+                    <!--item details control-->
+                    <UControl:ItemDetailsUControl Grid.Column="1" />
+
+                    <!--all items list control-->
+                    <UControl:ItemsUControl Grid.Column="2" />
+                </Grid>
+            </ScrollViewer>
+            <!--footer section-->
+                <UControl:FooterUControl Grid.Row="1"/>
+            </Grid>
+       
+       
+    </Grid>
+</Page>

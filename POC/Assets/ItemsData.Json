@@ -1,0 +1,74 @@
+﻿{
+  "ItemData": [
+    {
+      "Code": "",
+      "Description": "",
+      "Qty": "",
+      "Price": "",
+      "Disc": "",
+      "Amount": "",
+      "Image": "ms-appx:///Images/add_icon.png",
+      "Name": "Add Item By Code"
+    },
+    {
+      "Code": "1",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "1",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item1.png",
+      "Name": "HotDog"
+    },
+    {
+      "Code": "2",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "2",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item2.png",
+      "Name": "Slushee"
+    },
+    {
+      "Code": "3",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "4",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item3.png",
+      "Name": "355ml coke/sprite/mazza"
+    },
+    {
+      "Code": "4",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "6",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item4.png",
+      "Name": "Comdog"
+    },
+    {
+      "Code": "5",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "0",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item5.png",
+      "Name": "Cheeseburger"
+    },
+    {
+      "Code": "6",
+      "Description": "Each of the rhetorical modes is present in a variety of forms and each has its own purpose and conventions",
+      "Qty": "2",
+      "Price": "1000",
+      "Disc": "10%",
+      "Amount": "900",
+      "Image": "ms-appx:///Images/item6.png",
+      "Name": "Chips, 10.5oz"
+    }
+  ]
+}
