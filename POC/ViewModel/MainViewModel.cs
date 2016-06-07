@@ -259,9 +259,9 @@ namespace POC.ViewModel
             try
             {
                 
-                string CountriesFile = @"Assets\ItemsData.Json";
+                string databaseFile = ConstantValue.DataBaseFileName;
                 StorageFolder InstallationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                StorageFile localFile = await InstallationFolder.GetFileAsync(CountriesFile);
+                StorageFile localFile = await InstallationFolder.GetFileAsync(databaseFile);
                 using (StreamReader file = File.OpenText(localFile.Path))
                 {
                     var json = file.ReadToEnd();
@@ -291,9 +291,9 @@ namespace POC.ViewModel
         {
             try
             {
-                string CountriesFile = @"Assets\TopTableData.Json";
+                string databaseFile = ConstantValue.DataBaseTopTableFileName;
                 StorageFolder InstallationFolder = Windows.ApplicationModel.Package.Current.InstalledLocation;
-                StorageFile localFile = await InstallationFolder.GetFileAsync(CountriesFile);
+                StorageFile localFile = await InstallationFolder.GetFileAsync(databaseFile);
                 using (StreamReader file = File.OpenText(localFile.Path))
                 {
                     var json = file.ReadToEnd();

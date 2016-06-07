@@ -11,7 +11,7 @@ namespace POC.Constant
     /// </summary>
     public class ConstantValue
     {
-        public const string DataBaseFileName = "MyAppDefaultValues.Json";
-        public const string DataBaseTopTableFileName = "TopTableData.Json";
+        public const string DataBaseFileName = @"Assets\ItemsData.Json";
+        public const string DataBaseTopTableFileName = @"Assets\TopTableData.Json";
     }
 }
