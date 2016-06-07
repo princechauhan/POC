@@ -113,7 +113,6 @@
     <Compile Include="Model\Info.cs" />
     <Compile Include="Model\TopTableInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="testcon.cs" />
     <Compile Include="UserControls\FooterUControl.xaml.cs">
       <DependentUpon>FooterUControl.xaml</DependentUpon>
     </Compile>
