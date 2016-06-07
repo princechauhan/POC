@@ -11,6 +11,10 @@ using System.IO;
 using Windows.ApplicationModel;
 using POC.Constant;
 using GalaSoft.MvvmLight.Command;
+using Windows.UI.Xaml;
+using System.Windows.Input;
+using POC.Common_Classes;
+
 
 namespace POC.ViewModel
 {
@@ -31,20 +35,51 @@ namespace POC.ViewModel
         /// </summary>
         public MainViewModel()
         {
+            
+            // create a decrement quantity Command instance
+            this.DecrementQuantityCommand = new DelegateCommand(ExecuteDecrementQuantityCommand);
+            // create a increment quantity Command instance
+            this.IncrementQuantityCommand = new DelegateCommand(ExecuteIncrementQuantityCommand);
+            //create a TopTableList instance
             TopTableList = new ObservableCollection<TopTableData>();
-            ItemDetailList = new ObservableCollection<string>();
+            //create a ItemDetailList instance
+            ItemDetailList = new ObservableCollection<ItemData>();
+            //create a HotItemList instance
             HotItemList = new ObservableCollection<ItemData>();
-
+            //calling function to fetch top table data
             GetTopTableList();
+            //calling function to fetch hot item data list
             GetItemList();
-
-            ItemDetailList.Add("dsdsd");
-            ItemDetailList.Add("dsdsd");
-           
         }
 
 
         #region Properties
+
+        /// <summary>
+        ///  member variable for Total amount property 
+        /// </summary>
+        private double totalAmount;
+        /// <summary>
+        /// This property will be contain total amount of all items after deduction discount
+        /// </summary>
+        public double TotalAmount
+        {
+            get { return totalAmount; }
+            set
+            {
+                this.Set(ref totalAmount, value, broadcast: true);
+            }
+        }
+
+        /// <summary>
+        ///  This property will be bound to button's Command property for increment quantity of an item
+        /// </summary>
+        public ICommand IncrementQuantityCommand { get; set; }
+
+        /// <summary>
+        ///  This property will be bound to button's Command property for decrement quantity of an item
+        /// </summary>
+        public ICommand DecrementQuantityCommand { get; set; }
 
         /// <summary>
         /// member variable for top table list
@@ -69,14 +104,14 @@ namespace POC.ViewModel
         /// <summary>
         /// member variable for item detail list
         /// </summary>
-        private ObservableCollection<string> itemDetailList;
+        private ObservableCollection<ItemData> itemDetailList;
         /// <summary>
         /// ObservableCollection for item detail list
         /// </summary>
         /// /// <remarks>
         /// after fetching data from database file, this list contain all items detail 
         /// </remarks>
-        public ObservableCollection<string> ItemDetailList
+        public ObservableCollection<ItemData> ItemDetailList
         {
             get { return itemDetailList; }
             set
@@ -109,6 +144,35 @@ namespace POC.ViewModel
 
         #region Commands
 
+
+        /// <summary>
+        /// button click event, occurs when the user click on quantity button, and it is use for increment quantity 
+        /// </summary>
+        void ExecuteIncrementQuantityCommand(object param)
+        {
+            var item = param as ItemData;
+            if(item!=null)
+            {
+                item.Qty = item.Qty + item.BaseQuantity;
+                //calling function to calculate amount 
+                CalculateAmount(item);
+            }
+        }
+        
+        /// <summary>
+        /// button click event, occurs when the user click on minus button, and it is use for decrement quantity 
+        /// </summary>
+        void ExecuteDecrementQuantityCommand(object param)
+        {
+            var item = param as ItemData;
+            if (item != null)
+            {
+                item.Qty = item.Qty - 1;
+                //calling function to calculate amount 
+                CalculateAmount(item);
+            }
+        }
+
         /// <summary>
         /// member variable for hot item click command
         /// </summary>
@@ -125,7 +189,36 @@ namespace POC.ViewModel
                     hotItemClickCommand = new RelayCommand<ItemData>(
                         (item) =>
                         {
-                             
+                            foreach (var hotItem in HotItemList)
+                            {
+                                hotItem.IsQuantityButtonVisible = Visibility.Collapsed;
+                                hotItem.IsMinusButtonVisible = Visibility.Collapsed;
+                            }
+                            if (item != null && item.Code != "0")
+                            {                              
+                                if (ItemDetailList.Count!=0)
+                                {
+                                    foreach (var selectedItem in ItemDetailList)
+                                    {
+                                        if (selectedItem.Code == item.Code)
+                                        {
+                                            ItemDetailList.Remove(item);
+                                            break;
+                                        }
+                                    }
+                                    ItemDetailList.Add(item);
+                                }
+                                else
+                                {
+                                    ItemDetailList.Add(item);
+                                }
+                                
+                                //calling function to calculate amount 
+                                CalculateAmount(item);                                                                                       
+                                item.IsQuantityButtonVisible = Visibility.Visible;
+                                item.IsMinusButtonVisible = Visibility.Visible;
+                            }
+                            
                         });
                 }
 
@@ -137,8 +230,29 @@ namespace POC.ViewModel
 
         #region Methods
 
+
         /// <summary>
-        /// method for fetching items list from database file 
+        /// method for calculating amount for selected item base on quantity + discount 
+        /// </summary>
+        private void CalculateAmount(ItemData item)
+        {
+            TotalAmount = 0;
+            if (item.Disc > 0.0)
+            {
+                item.Amount = Convert.ToDouble(item.Qty * item.Price) - Convert.ToDouble((item.Qty * item.Price * item.Disc) / 100);
+            }
+            else
+            {
+                item.Amount = Convert.ToDouble(item.Qty * item.Price);
+            }
+            foreach(var item1 in ItemDetailList)
+            {
+                TotalAmount = item1.Amount + TotalAmount;
+            }
+        }
+
+        /// <summary>
+        /// method for fetching hot items list from database file 
         /// </summary>
         private async void GetItemList()
         {
@@ -157,6 +271,7 @@ namespace POC.ViewModel
                         HotItemList.Clear();
                         foreach (var item in result.ItemData)
                         {
+                            item.BaseQuantity = item.Qty;
                             HotItemList.Add(item);
                         }
                     }

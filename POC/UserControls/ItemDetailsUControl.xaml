@@ -23,7 +23,7 @@
             <TextBlock Text="Description" Style="{StaticResource CustomeTextBlockStyle}" Width="180" />
             <TextBlock Text="Qty." Style="{StaticResource CustomeTextBlockStyle}" Width="80" />
             <TextBlock Text="Price" Style="{StaticResource CustomeTextBlockStyle}" Width="100" />
-            <TextBlock Text="Dis." Style="{StaticResource CustomeTextBlockStyle}" Width="80" />
+            <TextBlock Text="Disc.(%)" Style="{StaticResource CustomeTextBlockStyle}" Width="80" />
             <TextBlock Text="Amount" Style="{StaticResource CustomeTextBlockStyle}" Width="123" />
         </StackPanel>
         <!--detail list-->
@@ -39,12 +39,12 @@
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="120"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="12" Foreground="#69797E" Margin="0,0,3,0"/>
-                        <TextBlock Text="hfdjf fdfgdf dfdf dfdfd fdfff" Margin="3,0,3,0" Foreground="#69797E" Grid.Column="1" TextWrapping="Wrap"/>
-                        <TextBlock Text="4" Foreground="#69797E" Grid.Column="2" Margin="3,0,3,0" TextWrapping="Wrap"/>
-                        <TextBlock Text="1000" Foreground="#69797E" Grid.Column="3" Margin="3,0,3,0" TextWrapping="Wrap"/>
-                        <TextBlock Text="4%" Foreground="#69797E" Grid.Column="4" Margin="3,0,3,0" TextWrapping="Wrap"/>
-                        <TextBlock Text="800" Foreground="#69797E" Grid.Column="5" Margin="3,0,3,0" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Code}" Foreground="#69797E" Margin="2,0,3,0"/>
+                        <TextBlock Text="{Binding Description}" Margin="3,0,3,0" Foreground="#69797E" Grid.Column="1" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Qty}" Foreground="#69797E" Grid.Column="2" Margin="3,0,3,0" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Price}" Foreground="#69797E" Grid.Column="3" Margin="3,0,3,0" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Disc}" Foreground="#69797E" Grid.Column="4" Margin="3,0,3,0" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Amount}" Foreground="#69797E" Grid.Column="5" Margin="3,0,3,0" TextWrapping="Wrap"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -89,7 +89,7 @@
                 </Button>
             </StackPanel>
             <Grid HorizontalAlignment="Right" Background="#F1F1F1" Width="200">
-                <TextBlock Text="$10.55" HorizontalAlignment="Right" Foreground="#313131" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="20"/>
+                <TextBlock Text="{Binding TotalAmount}" HorizontalAlignment="Right" Foreground="#313131" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="20"/>
             </Grid>
         </Grid>
         <Rectangle Fill="#889599" Height=".5" Grid.Row="4" Margin="0,10,0,0"/>

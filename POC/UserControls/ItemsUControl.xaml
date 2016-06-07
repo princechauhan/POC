@@ -24,7 +24,7 @@
                 <PivotItem.Header>
                     <TextBlock Text="Hot" Foreground="White" FontSize="20"/>
                 </PivotItem.Header>
-                <GridView Background="#F1F1F1" Padding="3" IsItemClickEnabled="True"  ItemsSource="{Binding HotItemList}">
+                <GridView x:Name="grdviewhotitemlist"  Background="#F1F1F1" Padding="3" IsItemClickEnabled="True"  ItemsSource="{Binding HotItemList}">
                     <Interactivity:Interaction.Behaviors>
                         <Core:EventTriggerBehavior EventName="ItemClick">
                             <Core:InvokeCommandAction Command="{Binding HotItemClickCommand}" InputConverter="{StaticResource ItemClickEventArgsConverter}"/>
@@ -37,8 +37,15 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Grid Background="White" Height="60" Width="110">
+                                <Grid Background="White" Height="70" Width="130">
                                     <Image Source="{Binding Image}" Stretch="Fill"/>
+                                    <Button Visibility="{Binding IsMinusButtonVisible}" Command="{Binding DataContext.DecrementQuantityCommand, ElementName=grdviewhotitemlist}" CommandParameter="{Binding}"  HorizontalAlignment="Right" Padding="0" BorderThickness="1" BorderBrush="Black" VerticalContentAlignment="Center" Height="15" Width="15" Margin="0,3,3,0" HorizontalContentAlignment="Center"  VerticalAlignment="Top">
+                                       
+                                        <Button.Content>
+                                            <Image Source="/Images/minus.png" />
+                                        </Button.Content>
+                                    </Button>
+                                    <Button Content="{Binding Qty}" Command="{Binding DataContext.IncrementQuantityCommand, ElementName=grdviewhotitemlist}" CommandParameter="{Binding}" Visibility="{Binding IsQuantityButtonVisible}" Foreground="White" BorderThickness="1" BorderBrush="White" HorizontalAlignment="Center" Padding="0" Height="30" Width="30" VerticalAlignment="Center"/>
                                 </Grid>
                                 <Grid Grid.Row="1" Background="#4A5459">
                                     <TextBlock Text="{Binding Name}" Margin="5,0,5,2" Foreground="#DDDFE0" FontSize="13" TextTrimming="CharacterEllipsis"/>
