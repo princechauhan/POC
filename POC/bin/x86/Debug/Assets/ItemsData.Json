@@ -1,0 +1,74 @@
+﻿{
+  "ItemData": [
+    {
+      "Code": "0",
+      "Description": "",
+      "Qty": 0,
+      "Price": 0,
+      "Disc": 0,
+      "Amount": 0,
+      "Image": "ms-appx:///Images/add_icon.png",
+      "Name": "Add Item By Code"
+    },
+    {
+      "Code": "1",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 1000,
+      "Disc": 10,
+      "Amount": 900,
+      "Image": "ms-appx:///Images/item1.png",
+      "Name": "HotDog"
+    },
+    {
+      "Code": "2",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 900,
+      "Disc": 9,
+      "Amount": 800,
+      "Image": "ms-appx:///Images/item2.png",
+      "Name": "Slushee"
+    },
+    {
+      "Code": "3",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 800,
+      "Disc": 8,
+      "Amount": 700,
+      "Image": "ms-appx:///Images/item3.png",
+      "Name": "355ml coke/sprite/mazza"
+    },
+    {
+      "Code": "4",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 700,
+      "Disc": 7,
+      "Amount": 600,
+      "Image": "ms-appx:///Images/item4.png",
+      "Name": "Comdog"
+    },
+    {
+      "Code": "5",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 600,
+      "Disc": 6,
+      "Amount": 500,
+      "Image": "ms-appx:///Images/item5.png",
+      "Name": "Cheeseburger"
+    },
+    {
+      "Code": "6",
+      "Description": "Each of the rhetorical modes is present in a variety of forms",
+      "Qty": 1,
+      "Price": 567,
+      "Disc": 3,
+      "Amount": 450,
+      "Image": "ms-appx:///Images/item6.png",
+      "Name": "Chips, 10.5oz"
+    }
+  ]
+}
